@@ -68,20 +68,30 @@ $rows = $stmt->fetchAll();
         <a href="taikin.php" class="btn btn-taikin">退勤入力画面へ</a>
     </div>
     <table>
-        <tr>
-            <th>ID</th>
-            <th>従業員ID</th>
-            <th>出勤時刻</th>
-            <th>退勤時刻</th>
-        </tr>
-        <?php foreach ($rows as $row): ?>
+        <thead>
             <tr>
-                <td><?= $row['id'] ?></td>
-                <td><?= $row['jugyoin_id'] ?></td>
-                <td><?= $row['start_work'] ?></td>
-                <td><?= $row['end_work'] ?: '---' ?></td>
+                <th>記録ID</th>
+                <th>氏名 (ID)</th>
+                <th>出勤時刻</th>
+                <th>退勤時刻</th>
             </tr>
-        <?php endforeach; ?>
+        </thead>
+        <tbody>
+            <?php foreach ($rows as $row): ?>
+                <tr>
+                    <td><?= $row['id'] ?></td>
+                    <td>
+                        <a href="user_history.php?id=<?= $row['jugyoin_id'] ?>" class="user-link">
+                            <?= htmlspecialchars($row['name'] ?? '未登録者') ?> (<?= $row['jugyoin_id'] ?>)
+                        </a>
+                    </td>
+                    <td><?= $row['start_work'] ?></td>
+                    <td>
+                        <?= $row['end_work'] ? $row['end_work'] : '<span class="status-working">勤務中</span>' ?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
     </table>
 </body>
 

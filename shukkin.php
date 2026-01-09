@@ -41,7 +41,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="container">
         <h2>おはようございます（出勤）</h2>
         <form method="post">
-            従業員ID: <input type="number" name="jugyoin_id" required><br><br>
+            従業員:
+            <select name="jugyoin_id" required>
+                <option value="">選択してください</option>
+                <?php foreach (getJugyoinList($pdo) as $j): ?>
+                    <option value="<?= $j['id'] ?>"><?= htmlspecialchars($j['id'] . ":" . $j['name']) ?></option>
+                <?php endforeach; ?>
+            </select><br><br>
             <input type="submit" value="出勤を記録する">
         </form>
         <p><a href="index.php">一覧に戻る</a></p>

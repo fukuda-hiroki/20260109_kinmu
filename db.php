@@ -28,4 +28,10 @@ try {
     // 接続エラーの本当の理由を表示させる
     exit('DB接続エラー詳細: ' . $e->getMessage());
 }
+
+// 従業員一覧を取得する関数
+function getJugyoinList($pdo) {
+    $stmt = $pdo->query("SELECT * FROM jugyoin ORDER BY id ASC");
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
 ?>
