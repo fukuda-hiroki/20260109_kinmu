@@ -1,6 +1,7 @@
 <?php
 require 'db.php';
-$stmt = $pdo->query("SELECT * FROM kiroku ORDER BY id DESC");
+// SQLを修正：kirokuとjugyoinを結合して名前を取得する
+$stmt = $pdo->query("SELECT k.*, j.name FROM kiroku k LEFT JOIN jugyoin j ON k.jugyoin_id = j.id ORDER BY k.id DESC");
 $rows = $stmt->fetchAll();
 ?>
 <!DOCTYPE html>
