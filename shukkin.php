@@ -11,6 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <head>
     <title>出勤入力</title>
+    <link rel="stylesheet" href="style.css">
     <style>
         body {
             background-color: #e6ffed;

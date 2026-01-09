@@ -8,6 +8,7 @@ $rows = $stmt->fetchAll();
 
 <head>
     <title>勤怠一覧</title>
+    <link rel="stylesheet" href="style.css">
     <style>
         body {
             background-color: #fff5e6;
